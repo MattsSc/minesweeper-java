@@ -16,11 +16,14 @@
     <description>Minesweeper project</description>
 
     <properties>
-        <java.version>15</java.version>
+        <java.version>14</java.version>
         <springfox-boot.version>3.0.0</springfox-boot.version>
+        <my-sql.version>8.0.21</my-sql.version>
+        <yaml.version>1.27</yaml.version>
     </properties>
 
     <dependencies>
+        <!--Spring-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -37,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-mongodb</artifactId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -55,6 +58,20 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!--My Sql Connector-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${my-sql.version}</version>
+        </dependency>
+        <!--YAML-->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${yaml.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>

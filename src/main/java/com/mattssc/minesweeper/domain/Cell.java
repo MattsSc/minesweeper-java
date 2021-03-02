@@ -1,5 +1,8 @@
 package com.mattssc.minesweeper.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Cell {
 
     private enum Status{
@@ -9,14 +12,34 @@ public class Cell {
         QUESTION_MARKED
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="row_pos")
     private int row;
+
+    @Column(name="column_pos")
     private int column;
+
+    @Enumerated(value = EnumType.STRING)
     private Status status;
 
+    @Column
     private boolean isMine;
+
+    @Column
     private int neighboursMines;
 
     public Cell() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getRow() {

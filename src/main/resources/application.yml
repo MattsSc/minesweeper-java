@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path:
+      /api/minesweeper
+  port: 8080
+spring:
+  datasource:
+    initialize: false
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: "jdbc:mysql://localhost:3306/minesweeper"
+    username: root
+    password:
+    testWhileIdle: true
+    validationQuery: SELECT 1
+  jpa:
+    show-sql: true
+    hibernate:
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        connection:
+          release_mode: on_close
