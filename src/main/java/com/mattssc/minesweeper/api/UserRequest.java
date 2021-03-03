@@ -8,6 +8,13 @@ public class UserRequest {
     @Schema
     private String username;
 
+    public UserRequest() {
+    }
+
+    public UserRequest(String username) {
+        this.username = username;
+    }
+
     public String getUsername() {
         return username;
     }

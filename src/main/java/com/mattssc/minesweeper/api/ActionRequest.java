@@ -20,6 +20,12 @@ public class ActionRequest {
     public ActionRequest() {
     }
 
+    public ActionRequest(ActionType action, int row, int column) {
+        this.action = action;
+        this.row = row;
+        this.column = column;
+    }
+
     public ActionType getAction() {
         return action;
     }
