@@ -7,9 +7,9 @@ spring:
   datasource:
     initialize: false
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: "jdbc:mysql://localhost:3306/minesweeper"
-    username: root
-    password:
+    url: "mysql://ba5907c2889e1f:accadc05@us-cdbr-east-03.cleardb.com/heroku_e8be2e07add90d5?reconnect=true"
+    username: ba5907c2889e1f
+    password: accadc05
     testWhileIdle: true
     validationQuery: SELECT 1
   jpa:
