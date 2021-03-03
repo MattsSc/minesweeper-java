@@ -5,17 +5,9 @@ import com.mattssc.minesweeper.domain.exceptions.MarkedCellException;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Entity
 public class Game {
-    private enum Status {
-        IN_PROGRESS,
-        PAUSED,
-        GAME_OVER,
-        WON
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -32,7 +24,7 @@ public class Game {
     private int moves;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private GameStatus status;
 
     @Column(name= "start_time")
     private LocalDateTime startDateTime;
@@ -45,7 +37,7 @@ public class Game {
     public void startGame(int rows, int columns, int mines) {
         this.board = new Board(rows, columns, mines);
         this.startDateTime = LocalDateTime.now();
-        this.status = Status.IN_PROGRESS;
+        this.status = GameStatus.IN_PROGRESS;
     }
 
     public Board getBoard() {
@@ -80,11 +72,11 @@ public class Game {
         this.moves = moves;
     }
 
-    public Status getStatus() {
+    public GameStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(GameStatus status) {
         this.status = status;
     }
 
@@ -122,18 +114,18 @@ public class Game {
         try {
             this.board.openCell(row, column);
             if(this.board.isAllOpened()){
-                this.endGame(Status.WON);
+                this.endGame(GameStatus.WON);
             }
             this.moves++;
         } catch (MarkedCellException ignored) {
         } catch (CellExplodedException e) {
-            endGame(Status.GAME_OVER);
+            endGame(GameStatus.GAME_OVER);
             this.board.showAllBombs();
         }
 
     }
 
-    private void endGame(Status status){
+    private void endGame(GameStatus status){
         this.status = status;
         this.endDateTime = LocalDateTime.now();
     }

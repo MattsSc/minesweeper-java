@@ -87,7 +87,6 @@ public class GameService {
         }
     }
 
-
     private void validateMinesQuantity(int rows, int columns, int mines) {
         if(mines >= columns * rows){
             throw new IllegalArgumentException("Mines can not be greater than cells in board.");
