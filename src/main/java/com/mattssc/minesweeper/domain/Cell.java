@@ -36,12 +36,6 @@ public class Cell {
         this.status = CellStatus.CLOSED;
     }
 
-    public Cell(boolean isMine) {
-        this.isMine = isMine;
-        this.status = CellStatus.CLOSED;
-        this.value = 9;
-    }
-
     public boolean isMyPosition(int row, int column){
         return (this.row == row && this.column == column);
     }
@@ -67,7 +61,6 @@ public class Cell {
     public void addNeighbourBomb(){
         this.value++;
     }
-
 
     //GETTERS AND SETTERS
 
