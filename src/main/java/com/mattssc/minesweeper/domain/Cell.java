@@ -1,16 +1,11 @@
 package com.mattssc.minesweeper.domain;
 
+import com.mattssc.minesweeper.domain.exceptions.CellExplodedException;
+
 import javax.persistence.*;
 
 @Entity
 public class Cell {
-
-    private enum Status{
-        CLOSED,
-        OPEN,
-        FLAG_MARKED,
-        QUESTION_MARKED
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,16 +18,58 @@ public class Cell {
     private int column;
 
     @Enumerated(value = EnumType.STRING)
-    private Status status;
+    private CellStatus status;
 
     @Column
     private boolean isMine;
 
     @Column
-    private int neighboursMines;
+    private int value;
 
     public Cell() {
     }
+
+    public Cell(int row, int column) {
+        this.row = row;
+        this.column = column;
+        this.isMine = Boolean.FALSE;
+        this.status = CellStatus.CLOSED;
+    }
+
+    public Cell(boolean isMine) {
+        this.isMine = isMine;
+        this.status = CellStatus.CLOSED;
+        this.value = 9;
+    }
+
+    public boolean isMyPosition(int row, int column){
+        return (this.row == row && this.column == column);
+    }
+
+    public boolean isMyNeighbour(Cell cell){
+        return (Math.abs(this.row - cell.row) <= 1 && Math.abs(this.column - cell.column) <= 1);
+    }
+
+    public void open() throws CellExplodedException {
+        if(this.isMine){
+            this.status = CellStatus.BOOM;
+            throw new CellExplodedException();
+        }
+        this.status = CellStatus.OPEN;
+    }
+
+    public void openBomb(){
+        if(this.isMine){
+            this.status = CellStatus.BOOM;
+        }
+    }
+
+    public void addNeighbourBomb(){
+        this.value++;
+    }
+
+
+    //GETTERS AND SETTERS
 
     public Long getId() {
         return id;
@@ -58,11 +95,11 @@ public class Cell {
         this.column = column;
     }
 
-    public Status getStatus() {
+    public CellStatus getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(CellStatus status) {
         this.status = status;
     }
 
@@ -72,13 +109,16 @@ public class Cell {
 
     public void setMine(boolean mine) {
         isMine = mine;
+        this.setValue(9);
     }
 
-    public int getNeighboursMines() {
-        return neighboursMines;
+    public int getValue() {
+        return value;
     }
 
-    public void setNeighboursMines(int neighboursMines) {
-        this.neighboursMines = neighboursMines;
+    public void setValue(int value) {
+        this.value = value;
     }
+
+
 }
