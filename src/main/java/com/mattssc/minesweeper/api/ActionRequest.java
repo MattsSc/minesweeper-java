@@ -5,13 +5,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 public class ActionRequest {
 
-    private enum ActionType {
-        DISMARK,
-        QUESTION_MARK,
-        BOMB_MARK,
-        DISCOVER
-    }
-
     @JsonProperty("action")
     @Schema
     private ActionType action;
