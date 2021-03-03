@@ -27,6 +27,7 @@ public class UserService {
         userRepository.save(user);
         return user;
     }
+
     public List<Game> getGamesForUser(Long userId) {
         return gameRepository.findByUser(userId);
     }

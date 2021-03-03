@@ -32,6 +32,13 @@ public class GameRequest {
 
     public GameRequest() {}
 
+    public GameRequest(@Min(1) int rows, @Min(1) int columns, @Min(1) int mines, @NotNull Long userId) {
+        this.rows = rows;
+        this.columns = columns;
+        this.mines = mines;
+        this.userId = userId;
+    }
+
     public int getRows() {
         return rows;
     }
