@@ -119,6 +119,7 @@ public class Game {
             this.moves++;
         } catch (MarkedCellException ignored) {
         } catch (CellExplodedException e) {
+            this.moves++;
             endGame(GameStatus.GAME_OVER);
             this.board.showAllBombs();
         }
