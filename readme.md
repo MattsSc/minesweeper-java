@@ -16,7 +16,7 @@ I use Java 14 and Spring boot to make this application. This project is separate
 
 Some decisions I made on the road:
 * The game starts when its created
-* When you mark a cell (or unmark) does not count as a move.
+* When you mark a cell (or unmark) does not count as a move. :D
 * The first move could be a bomb (https://www.reddit.com/r/AskReddit/comments/djnck/minesweeper_debate_can_you_can_lose_on_the_first/)
 
 
