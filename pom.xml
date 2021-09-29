@@ -20,6 +20,8 @@
         <springfox-boot.version>3.0.0</springfox-boot.version>
         <my-sql.version>8.0.21</my-sql.version>
         <yaml.version>1.27</yaml.version>
+        <sonar.organization>mattssc</sonar.organization>
+        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
     </properties>
 
     <dependencies>
