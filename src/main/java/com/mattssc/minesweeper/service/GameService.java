@@ -83,7 +83,7 @@ public class GameService {
         if(optionalUser.isPresent()){
            return optionalUser.get();
         }else{
-            throw new IllegalArgumentException("User does not exist. You need an account to play this game.");
+            throw new IllegalArgumentException("User does not exist.You need an account to play this game.");
         }
     }
 
